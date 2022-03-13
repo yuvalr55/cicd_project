@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        AWS_URL = "[aws-url]"
+        AWS_URL = environment("aws-url")
     }
 
     stages {
