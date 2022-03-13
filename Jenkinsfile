@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-               echo "building..."
+               echo "Building..."
                sh """
                 cd simple_webserver
                 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 352708296901.dkr.ecr.us-east-1.amazonaws.com
@@ -16,12 +16,12 @@ pipeline {
         }
         stage('Test') {
             steps {
-                 echo "testing..."
+                 echo "Testing..."
             }
         }
         stage('Deploy') {
             steps {
-                 echo "deploying..."
+                 echo "Deploying..."
             }
         }
     }
