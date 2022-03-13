@@ -27,10 +27,10 @@ pipeline {
                  '''
 
             }
-//               post {
-//                 always {
-//                     junit(allowEmptyResults: true,testResults: '**/test-reports/*.xml')
-//     }
+              post {
+                always {
+                    junit(allowEmptyResults: true,testResults: 'simple_webserver/results.xml')
+    }
         }
         stage('Deploy') {
             steps {
