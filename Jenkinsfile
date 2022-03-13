@@ -30,7 +30,7 @@ pipeline {
               post {
                 always {
                     junit(allowEmptyResults: true,testResults: 'simple_webserver/results.xml')
-    }
+    }}
         }
         stage('Deploy') {
             steps {
