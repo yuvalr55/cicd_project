@@ -18,7 +18,7 @@ pipeline {
             }
         }
         stage('Test') {
-            when{changeRequest()}
+            when{changeRequest target: 'dev'}
             steps {
                  echo "Testing..."
                  sh '''
