@@ -1,0 +1,3 @@
+extraPlugins: "rabbitmq_auth_backend_ldap"
+persistence:
+  size: 10Gi
