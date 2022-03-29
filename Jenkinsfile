@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        AWS_URL = '352708296901.dkr.ecr.us-east-1a.amazonaws.com'
+        AWS_URL = '352708296901.dkr.ecr.us-east-1.amazonaws.com'
     }
 
     stages {
