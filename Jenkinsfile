@@ -26,6 +26,12 @@ pipeline {
                     credentialsId: 'jfrog-default',
             )
 
+                rtPipResolver (
+                    id: "pip-default",
+                    serverId: "Artifactory-1",
+                    repo: "dep-pypi"
+                )
+
             }
 
         }
