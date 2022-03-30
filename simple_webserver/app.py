@@ -6,12 +6,13 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
+    a = 3
     return "<p>Hello, World! " + os.environ['HOSTNAME'] + "</p>"
 
 
 @app.route("/<name>")
 def hello(name):
-    return f"Hello Don, {name}!"
+    return f"Hello, {name}!"
 
 
 if __name__ == '__main__':
