@@ -6,6 +6,10 @@ pipeline {
 
     stages {
         stage('Build') {
+        when {
+                 branch 'master'
+                 branch 'dev'
+             }
             steps {
                echo "Building..."
                sh """
@@ -16,6 +20,12 @@ pipeline {
                 docker push 352708296901.dkr.ecr.us-east-1.amazonaws.com/flask-app-yuval:${BUILD_NUMBER}
                """
             }
+            post {
+                 always {
+                     // previous to version 2.0.0 you must provide parameters to this command (see below)!
+                     jiraSendBuildInfo()
+                 }
+             }
         }
         stage('Test') {
             when{changeRequest target: 'dev'}
