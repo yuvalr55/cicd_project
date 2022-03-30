@@ -6,7 +6,7 @@ pipeline {
 
     stages {
         stage('Build') {
-        when {
+             when {
                  branch 'dev'
              }
             steps {
