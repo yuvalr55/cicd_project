@@ -5,7 +5,7 @@ pipeline {
         PATH = "./venv/bin:$PATH" // Add pip virtual-environment's path to PATH
 
     }
-      stages {
+    stages {
         stage ('Create venv') {
             steps {
                 sh '''
@@ -15,15 +15,16 @@ pipeline {
                 '''
             }
         }
+    }
 
     stages {
         stage('Artifactory Configurations'){
             steps{
                 rtServer (
                     id: 'Artifactory-1',
-                    url: 'http://my-artifactory-domain/artifactory',
+                    url: 'https://artifactoryuval.jfrog.io/artifactory',
                     // If you're using Credentials ID:
-                    credentialsId: 'ccrreeddeennttiiaall',
+                    credentialsId: 'jfrog-default',
                     // If Jenkins is configured to use an http proxy, you can bypass the proxy when using this Artifactory server:
                     bypassProxy: true,
                     // Configure the connection timeout (in seconds).
