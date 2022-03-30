@@ -2,7 +2,19 @@ pipeline {
     agent any
     environment {
         AWS_URL = '352708296901.dkr.ecr.us-east-1.amazonaws.com'
+        PATH = "./venv/bin:$PATH" // Add pip virtual-environment's path to PATH
+
     }
+      stages {
+        stage ('Create venv') {
+            steps {
+                sh '''
+                # mkdir ./venv
+                python3 -m venv ./venv
+                source ./venv/bin/activate
+                '''
+            }
+        }
 
     stages {
         stage('Artifactory Configurations'){
@@ -45,6 +57,14 @@ pipeline {
              }
         }
         stage('Test') {
+            when { changeRequest() }
+            steps {
+                sh '''
+                pip install -r simple_webserver/requirements.txt
+                PYTHONPATH=. python3 -m pytest --junitxml results.xml simple_webserver/tests
+                '''
+                }
+            }
             when{changeRequest target: 'dev'}
             steps {
                  echo "Testing..."
